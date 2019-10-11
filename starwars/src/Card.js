@@ -2,10 +2,14 @@ import React from "react";
 
 const Card = props => {
     return(
-        <div>
-            {props.characters.map((data) => {
+        <div className="all-chars">
+           <h2>Name: {props.character.name}</h2>
+{/*            
+             key={props.id}>
+            {props.characters.map((data, index) => {
                 return(
-                    <h2>{data.name}</h2>
+                    <id key={index} value={data} */}
+                    />
                 )
                 })}
         </div>
