@@ -33,12 +33,12 @@ const [data, setData] = useState([]);
      <Container>
        <Row>
          <div className="card-cont">
-            {setData.map((props, index, array) => {
+            {setData.map((props, data, index, array) => {
            return (
-          <CardInfo key={props.id}
-            name={props.name}
-            hair={props.hair_color}
-            gender={props.gender}
+          <CardInfo key={{index}}
+            name={props.data.name[0]}
+            hair={props.data.hair_color}
+            gender={props.data.gender}
             />
          )})}
          </div>
