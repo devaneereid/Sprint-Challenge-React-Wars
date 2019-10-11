@@ -1,19 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import axios from "axios";
-import Card from "./Card";
+import CardInfo from "./CardInfo";
+import { Container, Row } from 'reactstrap';
 
 
 const App = () => {
-  const [warsData, setWarsData] = useState([]);
-
+const [data, setData] = useState([]);
+  
   // Try to think through what state you'll need for this app before starting. Then build out
   // the state properties here.
+
   useEffect(() => {
     return axios.get(`https://swapi.co/api/people/`)
       .then(response => {
         console.log(response.data);
-        setWarsData(response.data);
+        setData(response.data);
+
       })
       .catch(error => {
         console.log("Check for errors:", error);
@@ -27,17 +30,21 @@ const App = () => {
   return (
     <div className="App">
       <h1 className="Header">React Wars</h1>
-      <Container>
-        {warsData((warsData, index) => {
-          <Card
-            key={index}
-            name={warsData.name}
-            gender={warsData.gender}
+     <Container>
+       <Row>
+         <div className="card-cont">
+            {setData.map((props, index, array) => {
+           return (
+          <CardInfo key={props.id}
+            name={props.name}
+            hair={props.hair_color}
+            gender={props.gender}
             />
-        })}
-      </Container>
+         )})}
+         </div>
+        </Row>
+     </Container>
     </div>
-  );
+  )
 }
-
 export default App;
